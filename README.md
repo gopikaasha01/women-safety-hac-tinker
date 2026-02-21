@@ -361,9 +361,9 @@ python script.py -v --format json data.json
 ## Project Demo
 
 ### Video
-[Add your demo video link here - YouTube, Google Drive, etc.]
+[https://drive.google.com/file/d/1DtxYW_ZX_2iHMqWmsAXmmbz3jbFRscjb/view?usp=sharing]
 
-*Explain what the video demonstrates - key features, user flow, technical highlights*
+
 
 ### Additional Demos
 [Add any extra demo materials/links - Live site, APK download, online demo, etc.]
