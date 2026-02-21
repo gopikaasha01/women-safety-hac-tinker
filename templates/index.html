@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeWay | Women Safety Web Application</title>
+    <meta name="description"
+        content="A modern, responsive women safety web application featuring live location sharing and instant emergency alerts.">
+    <!-- Google Fonts: Inter for a modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .connection-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .connection-badge.online {
+            background: #4cd964;
+            color: white;
+        }
+
+        .connection-badge.offline {
+            background: #ff3b30;
+            color: white;
+        }
+
+        .connection-badge.warning {
+            background: #ffcc00;
+            color: black;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <!-- Sticky Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">SafeWay</h1>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shield">Shield</a></li>
+                <li><a href="#journal">Journal</a></li>
+                <li><a href="#emergency">Emergency</a></li>
+                <li><button id="darkModeToggle" class="nav-btn" title="Toggle Dark Mode">🌙</button></li>
+                <li><button id="discreetModeToggle" class="nav-btn" title="Toggle Discreet Mode">⚙️</button></li>
+                <li id="connectionBadge" class="connection-badge offline">Offline</li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2 class="hero-title">Your Safety is Our Priority</h2>
+            <p class="hero-tagline">Stay safe, stay connected. One tap to get help.</p>
+
+            <!-- Glow SOS Button -->
+            <div class="sos-container">
+                <button id="sosButton" class="sos-button">SOS</button>
+            </div>
+
+            <p id="statusMessage" class="status-text">Ready</p>
+        </div>
+    </section>
+
+    <!-- Action Buttons Section -->
+    <section class="action-section">
+        <div class="action-container">
+            <button id="shareLocationBtn" class="btn btn-primary">Share Live Location</button>
+            <button id="sendAlertBtn" class="btn btn-secondary">Send Alert Message</button>
+        </div>
+        <div id="locationDisplay" class="location-link"></div>
+    </section>
+
+    <!-- Emergency Numbers Section -->
+    <section id="emergency" class="emergency-section">
+        <h2 class="section-title">Emergency Numbers</h2>
+        <div class="emergency-grid">
+            <a href="tel:100" class="emergency-card police">
+                <div class="icon">🚓</div>
+                <h3>Police</h3>
+                <p>100 / 112</p>
+            </a>
+            <a href="tel:108" class="emergency-card ambulance">
+                <div class="icon">🚑</div>
+                <h3>Ambulance</h3>
+                <p>108</p>
+            </a>
+            <a href="tel:nearby-hospital" class="emergency-card hospital">
+                <div class="icon">🏥</div>
+                <h3>Nearby Hospital</h3>
+                <p>Call Help</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Advanced Security Shield Section -->
+    <section id="shield" class="shield-section">
+        <h2 class="section-title">Security Shield</h2>
+        <div class="shield-grid">
+            <!-- Siren Alarm -->
+            <div class="shield-card">
+                <div class="s-icon">🔔</div>
+                <h3>Siren Alarm</h3>
+                <p>Play a loud alert sound to attract attention.</p>
+                <button id="sirenBtn" class="btn btn-secondary">Activate Siren</button>
+            </div>
+
+            <!-- Safety Check Timer -->
+            <div class="shield-card">
+                <div class="s-icon">⏲️</div>
+                <h3>Safety Timer</h3>
+                <p>SOS triggers if you don't check in.</p>
+                <div class="timer-controls">
+                    <input type="number" id="timerInput" placeholder="Min" min="1" max="60">
+                    <button id="startTimerBtn" class="btn btn-primary">Start</button>
+                    <button id="stopTimerBtn" class="btn btn-secondary hidden">Stop</button>
+                </div>
+                <div id="countdownDisplay" class="countdown">--:--</div>
+            </div>
+
+            <!-- Fake Call -->
+            <div class="shield-card">
+                <div class="s-icon">📞</div>
+                <h3>Fake Call</h3>
+                <p>Simulate an incoming call for privacy.</p>
+                <button id="fakeCallBtn" class="btn btn-primary">Trigger (10s)</button>
+            </div>
+
+            <!-- Stealth Recorder -->
+            <div class="shield-card">
+                <div class="s-icon">🎙️</div>
+                <h3>Stealth Record</h3>
+                <p>Capture audio evidence discreetly.</p>
+                <button id="recordBtn" class="btn btn-secondary">Start Recording</button>
+                <p id="recordStatus" class="status-mini">Ready</p>
+            </div>
+
+            <!-- Safety Flash -->
+            <div class="shield-card">
+                <div class="s-icon">🔦</div>
+                <h3>Safety Flash</h3>
+                <p>Use screen as an emergency light.</p>
+                <button id="flashBtn" class="btn btn-primary">Flashlight</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Incident Journal Section -->
+    <section id="journal" class="journal-section">
+        <h2 class="section-title">Incident Journal</h2>
+        <div class="journal-container">
+            <div class="journal-entry-card">
+                <h3>Log New Incident</h3>
+                <form id="journalForm" method="post" action="/add_journal">
+                    <input type="text" id="journalTitle" placeholder="Title (e.g., Catcalled @ Park)" required>
+                    <textarea id="journalDesc" name="description" placeholder="Detailed description of what happened..."
+                        required></textarea>
+                    <button type="submit" class="btn btn-primary">Save Entry</button>
+                </form>
+            </div>
+            <div id="journalList" class="journal-list">
+                <!-- Journal entries will appear here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Safety Guide (Accordion) -->
+    <section id="guide" class="guide-section">
+        <h2 class="section-title">Safety & Legal Resource</h2>
+        <div class="accordion-container">
+            <div class="accordion-item">
+                <button class="accordion-header">⚖️ Your Legal Rights</button>
+                <div class="accordion-body">
+                    <p>Know your rights under local laws regarding harassment, stalking, and self-defense. Documentation
+                        is key—always use the Incident Journal.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">🥋 Self-Defense Basics</button>
+                <div class="accordion-body">
+                    <p>Remember: The best self-defense is awareness. Aim for weak spots (eyes, throat, knees) only if
+                        necessary to escape to safety.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">💻 Cyber Safety Tips</button>
+                <div class="accordion-body">
+                    <p>Always use 2FA, never share your location publicly on social media in real-time, and block anyone
+                        who makes you feel uncomfortable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted Contacts Management -->
+
+    <section id="contacts" class="contacts-section">
+        <h2 class="section-title">Trusted Contacts</h2>
+        <div class="contacts-container">
+            <form id="contactForm" class="contact-form" action="/add_contact" method="post">
+                <input type="text" id="contactName" name="name" placeholder="Name" required>
+                <input type="tel" id="contactPhone" name="phone" placeholder="Phone Number" required>
+                <button type="submit" class="btn btn-primary">Add Contact</button>
+            </form>
+            <div id="contactsList" class="contacts-list">
+                <!-- Contacts will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Cards Section -->
+    <section id="features" class="features-section">
+
+        <h2 class="section-title">Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="f-icon">📍</div>
+                <h3>Live Location</h3>
+                <p>Instantly find and share your real-time GPS coordinates with trusted contacts.</p>
+            </div>
+            <div class="feature-card">
+                <div class="f-icon">⚠️</div>
+                <h3>Instant Alerts</h3>
+                <p>Fast emergency messaging to our backend for immediate response triggers.</p>
+            </div>
+            <div class="feature-card">
+                <div class="f-icon">✨</div>
+                <h3>Easy to Use</h3>
+                <p>Simple, calming design for stress-free interaction during emergencies.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Tips Section (Placeholder for navigation) -->
+    <section id="tips" class="tips-section">
+        <h2 class="section-title">Safety Tips</h2>
+        <ul class="tips-list">
+            <li>Trust your instincts; if you feel unsafe, move to a crowded area.</li>
+            <li>Keep someone updated about your location when traveling alone.</li>
+            <li>Stay aware of your surroundings, especially in unfamiliar places.</li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 SafeWay App. All rights reserved.</p>
+        <p class="disclaimer">Disclaimer: This app is for demonstration and safety education. Always rely on local
+            emergency services.</p>
+    </footer>
+
+    <!-- Fake Call Modal Overlay -->
+    <div id="fakeCallModal" class="modal">
+        <div class="modal-content call-screen">
+            <div class="caller-info">
+                <div class="caller-avatar">👤</div>
+                <h2 id="callerName">Mom</h2>
+                <p>Incoming Call...</p>
+            </div>
+            <div class="call-actions">
+                <button id="declineCall" class="btn-call decline">✖</button>
+                <button id="acceptCall" class="btn-call accept">✔</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="safetyFlashOverlay" class="flash-overlay"></div>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
