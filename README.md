@@ -82,8 +82,24 @@ List the key features of your project:
 
 **System Architecture:**
 
-![Architecture Diagram](docs/architecture.png)
-*Explain your system architecture - components, data flow, tech stack interaction*
+![Architecture Diagram)]
+User
+  ↓
+Frontend (HTML, CSS, JavaScript)
+  ↓
+SOS Button Click
+  ↓
+Capture User Location
+  ↓
+Send POST Request (/send_alert)
+  ↓
+Flask Backend (Python)
+  ↓
+Send Emergency Message (SMS / WhatsApp)
+  ↓
+Return JSON Response
+  ↓
+Display Success / Error Message
 
 **Application Workflow:**
 
