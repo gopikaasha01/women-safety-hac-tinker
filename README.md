@@ -2,27 +2,27 @@
   <img src="./img.png" alt="Project Banner" width="100%">
 </p>
 
-# [Project Name] 🎯
+# [Project SafeWay] 🎯
 
 ## Basic Details
 
-### Team Name: [Name]
+### Team Name: [codenova]
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: [meenu] - [College of engineering attingal]
+- Member 2: [gopika] - [College of engineering attingal]
 
 ### Hosted Project Link
-[mention your project hosted link here]
+[https://women-safety-hac-tinker.onrender.com/]
 
 ### Project Description
-[2-3 lines about what your project does]
+[SafeWay is a comprehensive women's safety platform that combines a smart wearable device with a mobile application to provide real-time location tracking, emergency alerts, and community support. The system enables users to discreetly request help, share their location with trusted contacts, and access safety resources, ensuring they feel secure whether commuting, traveling, or in everyday situations.]
 
 ### The Problem statement
-[What problem are you solving?]
+[Women's safety is a critical concern in today's society, with many individuals feeling vulnerable while commuting, traveling, or even in familiar environments. Existing solutions often rely on smartphone apps that require active use, which may not be practical during an emergency. Additionally, there is a lack of integrated systems that combine wearable technology with community-based support networks. The absence of real-time location sharing and immediate emergency response mechanisms leaves many women feeling isolated and unprotected when they need help the most.]
 
 ### The Solution
-[How are you solving it?]
+[SafeWay addresses these challenges by providing a seamless and reliable safety solution. The wearable device allows users to trigger an emergency alert with a simple, discreet action, eliminating the need to fumble with a smartphone during a crisis. The mobile application serves as the central hub for managing safety preferences, tracking location in real-time, and accessing emergency contacts. By integrating both hardware and software, SafeWay ensures that help is always within reach, empowering women to navigate their lives with confidence and security.]
 
 ---
 
@@ -31,10 +31,10 @@
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
+- Languages used: [JavaScript, Python, HTML, CSS]
+- Frameworks used: [flask]
+- Libraries used: [flask]
+- Tools used: [antigravity, github,vs code]
 
 **For Hardware:**
 - Main components: [List main components]
@@ -46,10 +46,10 @@
 ## Features
 
 List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+- Feature 1: [one-touch emergency alert]
+- Feature 2: [real-time location tracker]
+- Feature 3: [user friendly interface]
+- Feature 4: [quick call toemergency numbers]
 
 ---
 
@@ -59,12 +59,12 @@ List the key features of your project:
 
 #### Installation
 ```bash
-[Installation commands - e.g., npm install, pip install -r requirements.txt]
+[pip install -r requirements.txt]
 ```
 
 #### Run
 ```bash
-[Run commands - e.g., npm start, python app.py]
+[python app.py]
 ```
 
 ### For Hardware:
@@ -83,7 +83,7 @@ List the key features of your project:
 
 #### Screenshots (Add at least 3)
 
-![Screenshot1](Add screenshot 1 here with proper name)
+![](Stay safe with SafeWay — one tap, instant help. 🚨)
 *Add caption explaining what this shows*
 
 ![Screenshot2](Add screenshot 2 here with proper name)
